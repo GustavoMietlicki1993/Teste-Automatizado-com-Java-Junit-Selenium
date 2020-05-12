@@ -6,7 +6,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.*;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class OpenSiteTest {
@@ -27,7 +29,9 @@ public class OpenSiteTest {
 	@Test
 	public void test() throws InterruptedException {
 		driver.get("http://automationpractice.com/index.php");
-		assertTrue("Titulo da pagina difere do esperado", driver.getTitle().contentEquals("My Store"));
+		assertTrue("Valor incorreto", driver.getTitle().contentEquals("My Store"));
+		WebElement searchbox = driver.findElement(By.id("searchbox"));
+		searchbox.sendKeys("calça");
 		Thread.sleep(5000);
 	}
 
